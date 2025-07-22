@@ -18,4 +18,4 @@ jobs:
           path: ./${{ secrets.PRIVATE_REPO }}
 
       - name: Run secure update action
-        uses: ./my_private/.github/workflows/my-reusable.yml
+        uses: ./my_private/.github/workflows
