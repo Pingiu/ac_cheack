@@ -10,5 +10,5 @@ jobs:
     with:
       some-input: value
     secrets:
-      MY_SECRET: ${{ secrets.MY_SECRET }}
+      MY_SECRET: ${{ secrets.PRIVATE_REPO_PAT }}
 
