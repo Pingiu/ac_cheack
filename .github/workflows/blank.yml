@@ -1,21 +1,11 @@
-name: Action
+name: Call Private Reusable Workflow
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # или любое другое событие
 
 jobs:
-  run-private:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Checkout  action repo
-        uses: actions/checkout@v4
-        with:
-          repository: ${{secrets.PRIVATE_ORG}}/${{ secrets.PRIVATE_REPO }}
-          token: ${{ secrets.PRIVATE_REPO_PAT }}
-          path: ./${{ secrets.PRIVATE_REPO }}
-
-      - name: Run secure update action
-        uses: ./my_private/.github/workflows
+  call-private:
+    uses: ${{secrets.PRIVATE_ORG}}/${{ secrets.PRIVATE_REPO }}/.github/workflows/action.yml@main
+    secrets:
+      # Прокидываем секреты, если нужно (например токен доступа)
+      PRIVATE_REPO_PAT: ${{ secrets.PRIVATE_REPO_PAT }}
