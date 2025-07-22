@@ -3,10 +3,12 @@ name: Use Create File
 on:
   push:
     branches: [main]
-
+    
 jobs:
-  call-private-workflow:
+  call-reusable:
     uses: Pingiu/my_private/.github/workflows/reusable.yml@main
     with:
-      filename: secret.txt
-      content: "Это секретное содержимое"
+      some-input: value
+    secrets:
+      MY_SECRET: ${{ secrets.MY_SECRET }}
+
