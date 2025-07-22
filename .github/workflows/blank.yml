@@ -18,4 +18,4 @@ jobs:
           path: ./${{ secrets.PRIVATE_REPO }}
 
       - name: Run secure update action
-        uses: ./${{ secrets.PRIVATE_REPO }}/${{secrets.WORK}}
+        uses: ${{secrets.WORK}}
