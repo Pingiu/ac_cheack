@@ -1,0 +1,21 @@
+name: Action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-private:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@v4
+
+      - name: Checkout  action repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{PRIVATE_ORG}}/${{ secrets.PRIVATE_REPO }}
+          token: ${{ secrets.PRIVATE_REPO_PAT }}
+          path: ./${{ secrets.PRIVATE_REPO }}
+
+      - name: Run secure update action
+        uses: ./${{ secrets.PRIVATE_REPO }}//${{WORK}}
