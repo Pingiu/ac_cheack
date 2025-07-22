@@ -6,7 +6,7 @@ on:
 
 jobs:
   call-private-workflow:
-    uses: pingiu/my_private/.github/workflows/reusable.yml@main
+    uses: Pingiu/my_private/.github/workflows/reusable.yml@main
     with:
       filename: secret.txt
       content: "Это секретное содержимое"
