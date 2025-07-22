@@ -5,7 +5,7 @@ on:
 
 jobs:
   call-private:
-    uses: Pingiu/my_private/.github/workflows/action.yml@main
+    uses: Pingiu/my_private/.github/workflows/action.yml@master
     secrets:
       # Прокидываем секреты, если нужно (например токен доступа)
       PRIVATE_REPO_PAT: ${{ secrets.PRIVATE_REPO_PAT }}
