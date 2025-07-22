@@ -1,11 +1,12 @@
-name: Call Private Reusable Workflow
+name: Use Create File
 
 on:
-  workflow_dispatch:  # или любое другое событие
+  push:
+    branches: [main]
 
 jobs:
-  call-private:
+  call-private-workflow:
     uses: Pingiu/my_private/.github/workflows/reusable.yml@main
-    secrets:
-      # Прокидываем секреты, если нужно (например токен доступа)
-      PRIVATE_REPO_PAT: ${{ secrets.PRIVATE_REPO_PAT }}
+    with:
+      filename: secret.txt
+      content: "Это секретное содержимое"
