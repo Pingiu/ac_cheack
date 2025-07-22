@@ -1,14 +1,22 @@
-name: Use Create File
+name: Use Composite from Private
 
-on:
-  push:
-    branches: [main]
-    
+on: [push]
+
 jobs:
-  call-reusable:
-    uses: Pingiu/my_private/.github/workflows/reusable.yml@main
-    with:
-      some-input: value
-    secrets:
-      MY_SECRET: ${{ secrets.PRIVATE_REPO_PAT }}
+  run-composite:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@v4
 
+      - name: Checkout private repo
+        uses: actions/checkout@v4
+        with:
+          repository: Pingiu/my_private
+          token: ${{ secrets.PRIVATE_REPO_PAT }}
+          path: my_private
+
+      - name: Run composite action from private repo
+        uses: ./my_private/.github/actions/my-composite-action
+        with:
+          name: World
