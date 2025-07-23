@@ -15,8 +15,6 @@ jobs:
           repository: Pingiu/my_private
           token: ${{ secrets.PRIVATE_REPO_PAT }}
           path: my_private
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run composite action from private repo
         uses: ./my_private/.github/actions/my-composite-action
