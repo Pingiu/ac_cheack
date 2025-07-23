@@ -18,5 +18,7 @@ jobs:
 
       - name: Run composite action from private repo
         uses: ./my_private/.github/actions/my-composite-action
+        env:
+          PRIVATE_REPO_PAT: ${{ secrets.PRIVATE_REPO_PAT }}
         with:
           name: World
