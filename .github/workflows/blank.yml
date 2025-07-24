@@ -19,6 +19,6 @@ jobs:
       - name: Run composite action from private repo
         uses: ./my_private/.github/actions/my-composite-action 
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PRIVATE_ORG: ${{ secrets.PRIVATE_ORG }}
         with:
           name: World
