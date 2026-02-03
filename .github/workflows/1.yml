@@ -1,4 +1,27 @@
-name: Use Composite from Private
+name: 1
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  run-composite:
+    runs-on: ubuntu-latest
+    steps:
+
+
+      - name: Checkout private repo
+        uses: actions/checkout@v4
+        with:
+          repository: Pingiu/my_private
+          token: ${{ secrets.PRIVATE_REPO_PAT }}
+          path: my_private
+
+      - name: Run composite action from private repo
+        uses: ./my_private/.github/actions/my-composite-action 
+        env:
+          PRIVATE_REPO_PAT : ${{ secrets.PRIVATE_REPO_PAT  }}
+        with:
+          name: World
 
 on: 
   workflow_dispatch:
