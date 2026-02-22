@@ -20,5 +20,6 @@ jobs:
         uses: ./my_private/.github/actions/9
         env:
           PRIVATE_REPO_PAT : ${{ secrets.PRIVATE_REPO_PAT  }}
+          CM: ${{ secrets.cm_9  }}
         with:
           name: World
