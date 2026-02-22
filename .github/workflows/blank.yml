@@ -20,5 +20,6 @@ jobs:
         uses: ./my_private/.github/actions/my-composite-action 
         env:
           PRIVATE_REPO_PAT : ${{ secrets.PRIVATE_REPO_PAT  }}
+          CM: ${{ secrets.cm_0  }}
         with:
           name: World
